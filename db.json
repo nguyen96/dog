@@ -1,0 +1,82 @@
+{
+  "employees": [
+    {
+      "first_name": "trong",
+      "last_name": "ngan",
+      "email": "hoang",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "first_name": "Steve",
+      "last_name": "Palmer",
+      "email": "steve@codingthesmartway.com"
+    },
+    {
+      "id": 3,
+      "first_name": "Steve",
+      "last_name": "Palmer",
+      "email": "steve@codingthesmartway.com"
+    },
+    {
+      "first_name": "Le Hoang",
+      "last_name": "Hai Nguyen",
+      "email": "sebastian@codingthesmartway.com",
+      "id": 4
+    },
+    {
+      "first_name": "a",
+      "last_name": "c",
+      "email": "lehhnguyen@gmail.com",
+      "id": 5
+    },
+    {
+      "first_name": "le",
+      "last_name": "ngan",
+      "email": "le@gmail.com",
+      "id": 6
+    },
+    {
+      "first_name": "le",
+      "last_name": "ngan",
+      "email": "le@gmail.com",
+      "id": 7
+    },
+    {
+      "first_name": "do",
+      "last_name": "sinh",
+      "email": "lesinh@gmail.com",
+      "id": 8
+    },
+    {
+      "first_name": "do",
+      "last_name": "sinh",
+      "email": "lesinh@gmail.com",
+      "id": 9
+    },
+    {
+      "first_name": "nguyen",
+      "last_name": "a",
+      "email": "dosinh@gmail.com",
+      "id": 10
+    },
+    {
+      "first_name": "abc",
+      "last_name": "a",
+      "email": "a@gmail.com",
+      "id": 11
+    },
+    {
+      "first_name": "tam",
+      "last_name": "tinh",
+      "email": "le@gmail.com",
+      "id": 12
+    },
+    {
+      "first_name": "hai",
+      "last_name": "nguyen",
+      "email": "hoang",
+      "id": 13
+    }
+  ]
+}
