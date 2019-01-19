@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>trang chu</title>
+	<link rel="stylesheet" href="">
+
+	
+</head>
+<body>
+
+	<input type="text" id="InputFirstName"><br>
+	<input type="text" id="InputLastName"><br>
+	<input type="email" id="InputEmail">
+	<button id="idAdd">
+		Add
+	</button>
+	<ul id="listPeople">
+     
+	</ul>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script type="text/javascript" charset="utf-8" async defer>
+		// var user=[
+		// "Ngan",
+		// "Nguyen",
+		// "Thong",
+		// "Sinh",
+		// "Phan"
+		// ];
+
+		// var url='http://localhost:9081/employees';
+		// axios.get(url).then(function(res){
+		// 	console.log('Load...',res.data);
+		// 	var items=res.data;
+		// 	render(items);
+		// })
+	var storage='list';
+
+		// var dataString= localStorage.getItem(storage);
+		// if(dataString){
+		// 	user=JSON.parse(dataString);
+		// }
+		// else{
+		// 	user=[];
+		// }
+
+       function getData(){
+       	var url='http://localhost:9081/employees';
+		axios.get(url).then(function(res){
+			console.log('Load...',res.data);
+			var items=res.data;
+			render(items);
+		})
+       }
+		
+
+		var getIdPeople=document.getElementById('listPeople');
+		//console.log(getIdPeople);
+		var getIdInputF=document.getElementById('InputFirstName');
+
+		var getIdInputL=document.getElementById('InputLastName');
+		var getIdInputE=document.getElementById('InputEmail');
+		idAdd.addEventListener('click',addPeople);
+    //    getIdPeople.addEventListener('click', deletePeople);
+        getIdPeople.addEventListener('click',updatePeople);
+
+        function updatePeople(eventn){
+        //  document.getElementById('InputFirstName').value=;
+        	var valueInputF=getIdInputF.value;
+        	// console.log(event)
+        	// console.log(event.target.dataset);
+        	var valueInputL=getIdInputL.value;
+        	var valueInputE=getIdInputE.value;
+        	var data={
+        		first_name: valueInputF,
+        		last_name: valueInputL,
+        		email: valueInputE
+        	}
+
+        	// console.log(data.last_name);
+        	// document.getElementById('InputLastName').value=data.last_name;
+        	// document.getElementById('InputEmail').value=data.email;
+
+        	var button=event.target;
+        	var i=parseInt(button.dataset.id)+1;
+
+       //	 console.log(i);
+       	// var data={
+       	// 	id: idChild
+       	// }
+
+
+       	 // axios.put('http://localhost:9081/employees/'+i,data,{headers:{
+       	 // 	'Content-Type': 'application/json',
+       	 // }}).then(function(res){
+       	 // 	console.log('Bạn đã cap nhat thành công');
+       	 // 	getData();
+       	 // })
+        }
+
+
+		function addPeople(){
+
+	// user.push(valueInput);
+			// render();
+			// localStoragse.setItem(storage,JSON.stringify(user));
+			// getIdInput.value='';
+			var valueInputF=getIdInputF.value;
+			var valueInputL=getIdInputL.value;
+			var valueInputE=getIdInputE.value;
+			var data={
+			first_name: valueInputF,
+			last_name: valueInputL,
+			email: valueInputE
+		}
+			axios.post('http://localhost:9081/employees',data,{headers:{
+				'Content-Type': 'application/json',
+			}}).then(function(res){
+				console.log('Load...',res.data);
+				getData();
+			})
+		}
+
+     
+       function deletePeople(event){
+       //	 console.log(event);
+       	 var button=event.target;
+       	 var i=parseInt(button.dataset.id)+1;
+       	 console.log(i);
+       	// var data={
+       	// 	id: idChild
+       	// }
+
+
+       	 axios.delete('http://localhost:9081/employees/'+i).then(function(res){
+       	 	console.log('Bạn đã xóa thành công');
+       	 	getData();
+       	 })
+       }
+       var a ;
+		function render(items){
+			var content=items.map(function(x,index){
+			//	var article = document.getElementById(x.id);
+			//article=x.id;
+			//d1.insertAdjacentHTML('afterend', '<div id="two">two</div>');
+			// a=document.getElementById('listPeople').innerHTML = '<button id="idChild" onclick="deletePeople()">Delete </button>';
+          //   console.log(index);<button data-id='+ index+' >Delete</button>
+				return '<li data-name='+x.first_name+'>' + x.first_name +'<button data-id='+index+'>Update</button></li>';
+			});
+			listPeople.innerHTML=content.join('');
+		}
+
+         // var b= document.getElementById('idChild');
+         // console.log(b);
+		  // b.addEventListener(click,deletePeople);
+
+// console.log(article);
+
+// 1. Tạo một REST api server sử dụng json-server
+// 2. Đọc documentation của json-server và axios, tìm hiểu các method GET, POST, PUT, PATCH, DELETE
+// 3. Làm các ví dụ sử dụng axios để gửi các request lên json-server để tạo object mới, update 1 object với dữ liệu mới, xoá 1 object
+// Lưu ý: đây là một bài khó nếu bạn là beginner, tuy nhiên, khi hiểu được bài này bạn sẽ có thể lên 1 level mới (beginner cao cấp).
+// Hãy dành 1 ngày để đọc, tìm hiểu, thử. Sau 1 ngày nếu bạn không làm được thì có thể hỏi trên Coders.Tokyo Slack hoặc JsLand.
+		getData();
+		
+	</script>
+</body>
+</html>
